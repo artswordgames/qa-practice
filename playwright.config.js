@@ -1,4 +1,5 @@
 // @ts-check
+require("dotenv").config({ path: ".env.local" });
 const { defineConfig } = require("@playwright/test");
 
 module.exports = defineConfig({
@@ -7,7 +8,7 @@ module.exports = defineConfig({
   retries: 0,
   reporter: [["list"], ["html", { open: "never" }]],
   use: {
-    baseURL: "http://localhost:5000",
+    baseURL: process.env.API_URL || "http://localhost:5001/api",
     extraHTTPHeaders: {
       "Content-Type": "application/json",
     },

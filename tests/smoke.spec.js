@@ -1,6 +1,6 @@
 const { test, expect } = require("@playwright/test");
 
-const BASE_URL = "http://localhost:5001/api";
+const BASE_URL = process.env.API_URL || "http://localhost:5001/api";
 
 async function getAuthToken(request) {
   const email = `testuser${Date.now()}@example.com`;
